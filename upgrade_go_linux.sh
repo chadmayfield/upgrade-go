@@ -6,7 +6,7 @@
 # license : gplv3
 
 fail() {
-    echo "$@"; exit 1;
+    echo "ERROR: $@"; exit 1;
 }
 
 command -v curl >/dev/null 2>&1 || \
@@ -24,10 +24,10 @@ if [[ $OSTYPE =~ "linux" ]]; then
             curl -nsS "$url" -O -w "Downloaded %{size_download} bytes in %{time_total}s\n" || fail "Download failed!"
 
             printf "Uncompressing: %s\n" "${url##*/}"
-            sudo rm -rf "$gpath/go"
+            sudo rm -rf "$gpath/go" || fail "Unable to remove prior install!"
             sudo tar xzf "${url##*/}" -C "$gpath" || fail "Failed to uncompress ${url##*/}!"
 
-            printf "Updated to %s!\n" "$($gpath/go/bin/go version)"
+            printf "Updated to %s!\n" "$($gpath/go/bin/go version)" || fail "Uh-oh, go version failed! Is $GOPATH set?"
             rm -f "${url##*/}"
         else
             fail "URL not found!"
