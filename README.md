@@ -1,6 +1,6 @@
 # upgrade-go
 
-Upgrading [go](https://golang.org) in 40 lines of bash. Blog post coming soon.
+Upgrading [go](https://golang.org) in 40 lines of bash. [Blog post here](https://chadmayfield.com/2019/08/29/upgrading-go-in-40-lines-of-bash/).
 
 ### Requirements
 * Linux system with [golang](https://golang.org/dl/) installed (usually to `/usr/local/go`)
