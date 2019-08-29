@@ -9,15 +9,16 @@ fail() {
     echo "ERROR: $@"; exit 1;
 }
 
-command -v curl >/dev/null 2>&1 || \
-    { echo >&2 "ERROR: curl is required, but it's not installed!"; exit 1; }
-
-read -t 10 -p "This will upgrade go... are you sure? (Y/N) " -n 1 -r
-
-gpath="/usr/local/"
-url="$(curl -s https://golang.org/dl/ | grep 'downloadBox.*linux' | grep -Po '(?<=href=")[^"]*(?=")')"
-
 if [[ $OSTYPE =~ "linux" ]]; then
+
+    command -v curl >/dev/null 2>&1 || \
+        { echo >&2 "ERROR: curl is required, but it's not installed!"; exit 1; }
+
+    read -t 10 -p "This will upgrade go... are you sure? (Y/N) " -n 1 -r
+
+    gpath="/usr/local/"
+    url="$(curl -s https://golang.org/dl/ | grep 'downloadBox.*linux' | grep -Po '(?<=href=")[^"]*(?=")')"
+
     if [ -d "${gpath}/go" ]; then
         if [ -n "${url+x}" ]; then
             printf "\nFound: %s\nDownloading now...\n" "$url"
