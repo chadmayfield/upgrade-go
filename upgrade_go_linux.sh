@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# update_go.sh - update installation of go on linux
+# upgrade_go_linux.sh - update installation of go on linux
 
 # author  : Chad Mayfield (chad@chd.my)
 # license : gplv3
