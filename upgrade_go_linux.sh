@@ -6,7 +6,7 @@
 # license : gplv3
 
 fail() {
-    echo "ERROR: $@"; exit 1;
+    echo "ERROR:" "$@"; exit 1;
 }
 
 if [[ $OSTYPE =~ "linux" ]]; then
